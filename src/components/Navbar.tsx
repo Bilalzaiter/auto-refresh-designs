@@ -67,6 +67,7 @@ export const Navbar = () => {
           <button 
             className="md:hidden p-2 text-auto-darkGray" 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -80,6 +81,15 @@ export const Navbar = () => {
           mobileMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
+        {/* Close button positioned absolutely at the top */}
+        <button 
+          className="absolute top-4 right-4 p-2 rounded-full bg-auto-lightGray text-auto-darkGray hover:bg-auto-gray transition-colors"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-label="Close menu"
+        >
+          <X size={24} />
+        </button>
+        
         <nav className="container-custom flex flex-col space-y-4 p-4">
           {navItems.map((item) => (
             <Link
