@@ -11,6 +11,7 @@ import HowItWorks from "./pages/HowItWorks";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import SearchResults from "./pages/SearchResults";
+import CarDetailsForm from "./pages/CarDetailsForm";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/search" element={<SearchResults />} />
+          <Route path="/car-details" element={<CarDetailsForm />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

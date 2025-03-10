@@ -1,10 +1,10 @@
-
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Navbar } from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { PhoneCall, ClipboardCheck, CarFront, Banknote, CheckCircle, ArrowRight } from 'lucide-react';
 import PageHeader from '@/components/PageHeader';
+import { Link } from 'react-router-dom';
 
 const HowItWorks = () => {
   // Scroll to top when the component mounts
@@ -93,10 +93,10 @@ const HowItWorks = () => {
                     ))}
                   </div>
                   
-                  <button className="bg-auto-blue text-white px-6 py-3 rounded-md font-medium hover:bg-auto-darkBlue transition-colors flex items-center gap-2 mt-2">
+                  <Link to="/car-details" className="bg-auto-blue text-white px-6 py-3 rounded-md font-medium hover:bg-auto-darkBlue transition-colors flex items-center gap-2 mt-2 w-fit">
                     Jetzt Anfrage stellen
                     <ArrowRight size={18} />
-                  </button>
+                  </Link>
                 </div>
                 
                 <div className="rounded-lg overflow-hidden shadow-lg">
