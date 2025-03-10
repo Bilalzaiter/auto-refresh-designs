@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Navbar } from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import VehicleSearch from '@/components/VehicleSearch';
-import FeaturedSection from '@/components/FeaturedSection';
+import CarValuationForm from '@/components/VehicleSearch';
+import BenefitsSection from '@/components/FeaturedSection';
 import ServicesSection from '@/components/ServicesSection';
 import Testimonials from '@/components/Testimonials';
 import CTASection from '@/components/CTASection';
@@ -19,8 +19,9 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>AutoExport Schweiz | Premium Fahrzeuge Import & Export</title>
-        <meta name="description" content="Ihr vertrauenswürdiger Partner für den Import und Export hochwertiger Fahrzeuge in der Schweiz. Persönliche Beratung und professionelle Abwicklung." />
+        <title>AutoExport Schweiz | #1 Auto Ankauf zu Bestpreisen</title>
+        <meta name="description" content="Verkaufen Sie Ihr Auto schnell und einfach zu Bestpreisen. Sofortige Barauszahlung, kostenlose Bewertung, Abholung in der ganzen Schweiz. Auto verkaufen Schweiz." />
+        <meta name="keywords" content="Auto verkaufen, Auto Ankauf Schweiz, Fahrzeug verkaufen, Auto Bestpreis, Gebrauchtwagen verkaufen, PKW Ankauf, sofort Bargeld, Auto bewerten" />
       </Helmet>
 
       <div className="min-h-screen flex flex-col">
@@ -30,15 +31,15 @@ const Index = () => {
           {/* Hero Section */}
           <Hero />
           
-          {/* Search Filter */}
+          {/* Car Valuation Form */}
           <div className="container-custom relative z-20">
-            <VehicleSearch />
+            <CarValuationForm />
           </div>
           
-          {/* Featured Vehicles */}
-          <FeaturedSection />
+          {/* Benefits Section */}
+          <BenefitsSection />
           
-          {/* Services */}
+          {/* How It Works */}
           <ServicesSection />
           
           {/* Testimonials */}

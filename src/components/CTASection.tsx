@@ -1,5 +1,5 @@
 
-import { ArrowRight, Phone } from 'lucide-react';
+import { ArrowRight, Phone, ThumbsUp } from 'lucide-react';
 
 const CTASection = () => {
   return (
@@ -47,34 +47,40 @@ const CTASection = () => {
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="text-white">
-            <h2 className="text-3xl font-bold mb-4">Bereit für Ihr neues Fahrzeug?</h2>
+            <h2 className="text-3xl font-bold mb-4">Bereit, Ihr Auto zu verkaufen?</h2>
             <p className="text-white/90 text-lg mb-6">
-              Kontaktieren Sie uns noch heute für eine persönliche Beratung und ein unverbindliches Angebot.
+              Kontaktieren Sie uns jetzt und erhalten Sie in wenigen Minuten ein kostenloses Angebot für Ihr Fahrzeug!
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="btn-hover-effect bg-white text-auto-blue px-6 py-3 rounded-md font-medium text-lg flex items-center gap-2 hover:bg-opacity-90 transition-colors">
-                Kontakt aufnehmen
+                Jetzt Auto bewerten
                 <ArrowRight size={20} />
               </button>
               <a 
-                href="tel:+41123456789" 
+                href="tel:+41XXXXXXXXX" 
                 className="inline-flex items-center gap-2 text-white text-lg font-medium"
               >
                 <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                   <Phone size={18} />
                 </div>
-                +41 123 456 789
+                +41 XX XXX XX XX
               </a>
             </div>
           </div>
           
           <div className="hidden md:block">
-            <img
-              src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=2073&auto=format&fit=crop"
-              alt="Car showroom"
-              className="rounded-lg shadow-lg transform rotate-1 hover:rotate-0 transition-transform duration-300"
-              style={{ maxHeight: '300px', objectFit: 'cover' }}
-            />
+            <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+              <div className="flex items-center gap-3 mb-4">
+                <ThumbsUp size={24} className="text-white" />
+                <h3 className="text-xl font-bold text-white">Zufriedene Kunden</h3>
+              </div>
+              <blockquote className="italic text-white/90 mb-4">
+                "Schnell, unkompliziert und zu einem fairen Preis! AutoExport Schweiz hat mein Auto innerhalb eines Tages übernommen und direkt das Geld überwiesen. Sehr professionell!"
+              </blockquote>
+              <div className="text-right text-white/80">
+                - Michael S. aus Zürich
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,80 +1,77 @@
 
-import VehicleCard from './VehicleCard';
+import { ArrowRight, Banknote, Calendar, ClipboardCheck, Clock, Shield, Truck } from 'lucide-react';
 
-// Sample vehicle data
-const featuredVehicles = [
+const benefits = [
   {
     id: '1',
-    title: 'Mercedes-Benz E 300 de AMG Line',
-    price: 76900,
-    year: 2022,
-    mileage: 15000,
-    fuel: 'Hybrid',
-    transmission: 'Automatik',
-    image: 'https://images.unsplash.com/photo-1617814076229-810b465a0034?q=80&w=2340&auto=format&fit=crop',
-    featured: true,
+    icon: Banknote,
+    title: 'Bestpreise für Ihr Fahrzeug',
+    description: 'Wir zahlen Ihnen garantiert den besten Preis für Ihr Auto - sofort und in bar.',
   },
   {
     id: '2',
-    title: 'BMW 5er 530e xDrive Touring',
-    price: 69500,
-    year: 2021,
-    mileage: 28400,
-    fuel: 'Hybrid',
-    transmission: 'Automatik',
-    image: 'https://images.unsplash.com/photo-1556189250-72ba954cfc2b?q=80&w=2340&auto=format&fit=crop',
+    icon: Clock,
+    title: 'Schnelle Abwicklung',
+    description: 'Von der Bewertung bis zur Auszahlung dauert es nur wenige Stunden, nicht Tage oder Wochen.',
   },
   {
     id: '3',
-    title: 'Audi A6 Avant 55 TFSI e quattro',
-    price: 82300,
-    year: 2023,
-    mileage: 8900,
-    fuel: 'Hybrid',
-    transmission: 'Automatik',
-    image: 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=2340&auto=format&fit=crop',
+    icon: ClipboardCheck,
+    title: 'Kostenlose Fahrzeugbewertung',
+    description: 'Lassen Sie Ihr Fahrzeug kostenlos und unverbindlich von unseren Experten bewerten.',
   },
   {
     id: '4',
-    title: 'Volkswagen ID.4 Pro Performance',
-    price: 51900,
-    year: 2022,
-    mileage: 19500,
-    fuel: 'Elektro',
-    transmission: 'Automatik',
-    image: 'https://images.unsplash.com/photo-1601928652068-71435986c5ee?q=80&w=2340&auto=format&fit=crop',
+    icon: Truck,
+    title: 'Schweizweite Abholung',
+    description: 'Wir holen Ihr Fahrzeug kostenlos in der ganzen Schweiz bei Ihnen ab.',
   },
   {
     id: '5',
-    title: 'Toyota RAV4 2.5 HSD Plug-in',
-    price: 58700,
-    year: 2022,
-    mileage: 22100,
-    fuel: 'Hybrid',
-    transmission: 'Automatik',
-    image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2340&auto=format&fit=crop',
+    icon: Shield,
+    title: 'Seriös und zuverlässig',
+    description: 'Seit über 10 Jahren Ihr vertrauenswürdiger Partner für den Auto-Ankauf in der Schweiz.',
+  },
+  {
+    id: '6',
+    icon: Calendar,
+    title: 'Sofortige Abmeldung',
+    description: 'Wir übernehmen alle Formalitäten und melden Ihr Fahrzeug kostenlos für Sie ab.',
   },
 ];
 
-const FeaturedSection = () => {
+const BenefitCard = ({ icon: Icon, title, description }: { icon: React.ElementType, title: string, description: string }) => {
+  return (
+    <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full">
+      <div className="w-12 h-12 bg-auto-blue/10 rounded-full flex items-center justify-center mb-4">
+        <Icon className="text-auto-blue" size={24} />
+      </div>
+      <h3 className="text-xl font-bold text-auto-darkGray mb-2">{title}</h3>
+      <p className="text-auto-mediumGray flex-grow">{description}</p>
+    </div>
+  );
+};
+
+const BenefitsSection = () => {
   return (
     <section className="py-16 bg-auto-gray">
       <div className="container-custom">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8">
           <div>
-            <h2 className="text-3xl font-bold text-auto-darkGray mb-2">Ausgewählte Fahrzeuge</h2>
+            <h2 className="text-3xl font-bold text-auto-darkGray mb-2">Warum mit uns verkaufen?</h2>
             <p className="text-auto-mediumGray max-w-2xl">
-              Entdecken Sie unsere handverlesenen Premium-Fahrzeuge mit erstklassiger Qualität und umfassender Garantie.
+              Als führender Auto-Ankäufer in der Schweiz bieten wir Ihnen zahlreiche Vorteile für den schnellen und unkomplizierten Verkauf Ihres Fahrzeugs.
             </p>
           </div>
-          <button className="mt-4 md:mt-0 btn-secondary self-start">
-            Alle Fahrzeuge anzeigen
+          <button className="mt-4 md:mt-0 bg-transparent border border-auto-blue text-auto-blue hover:bg-auto-blue hover:text-white px-5 py-2 rounded-md font-medium transition-colors flex items-center gap-2 self-start">
+            <span>Alle Vorteile</span>
+            <ArrowRight size={18} />
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featuredVehicles.map((vehicle) => (
-            <VehicleCard key={vehicle.id} {...vehicle} />
+          {benefits.map((benefit) => (
+            <BenefitCard key={benefit.id} icon={benefit.icon} title={benefit.title} description={benefit.description} />
           ))}
         </div>
       </div>
@@ -82,4 +79,4 @@ const FeaturedSection = () => {
   );
 };
 
-export default FeaturedSection;
+export default BenefitsSection;

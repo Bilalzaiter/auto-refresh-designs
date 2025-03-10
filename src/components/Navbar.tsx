@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { title: 'Fahrzeuge', href: '/vehicles' },
-  { title: 'Kaufen', href: '/buy' },
-  { title: 'Verkaufen', href: '/sell' },
-  { title: 'Finanzierung', href: '/finance' },
+  { title: 'Autos verkaufen', href: '/sell' },
+  { title: 'So funktioniert\'s', href: '/how-it-works' },
+  { title: 'Unsere Vorteile', href: '/benefits' },
   { title: 'Über uns', href: '/about' },
   { title: 'Kontakt', href: '/contact' },
+  { title: 'FAQ', href: '/faq' },
 ];
 
 export const Navbar = () => {
@@ -104,7 +104,7 @@ export const Navbar = () => {
           <div className="relative mt-4 px-4">
             <input
               type="text"
-              placeholder="Fahrzeug suchen..."
+              placeholder="Nach Marke oder Modell suchen..."
               className="w-full p-3 pr-10 rounded-md border border-auto-lightGray focus:outline-none focus:ring-1 focus:ring-auto-blue"
             />
             <Search size={20} className="absolute right-8 top-1/2 transform -translate-y-1/2 text-auto-mediumGray" />
