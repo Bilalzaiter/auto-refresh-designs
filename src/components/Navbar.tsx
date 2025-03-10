@@ -1,19 +1,19 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, Search } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { title: 'Autos verkaufen', href: '/sell' },
+  { title: 'Auto verkaufen', href: '/' },
   { title: 'So funktioniert\'s', href: '/how-it-works' },
-  { title: 'Unsere Vorteile', href: '/benefits' },
   { title: 'Über uns', href: '/about' },
-  { title: 'Kontakt', href: '/contact' },
   { title: 'FAQ', href: '/faq' },
+  { title: 'Kontakt', href: '/contact' },
 ];
 
 export const Navbar = () => {
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -26,6 +26,11 @@ export const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile menu when navigating
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <header className={cn(
@@ -41,10 +46,18 @@ export const Navbar = () => {
             to="/" 
             className="flex items-center"
           >
-            <span className="text-auto-blue font-bold text-2xl tracking-tight">
+            <span className={cn(
+              "font-bold text-2xl tracking-tight transition-colors",
+              isScrolled || mobileMenuOpen ? "text-auto-blue" : "text-white"
+            )}>
               AutoExport
             </span>
-            <span className="text-auto-darkGray font-medium text-2xl">Schweiz</span>
+            <span className={cn(
+              "font-medium text-2xl transition-colors",
+              isScrolled || mobileMenuOpen ? "text-auto-darkGray" : "text-white"
+            )}>
+              Schweiz
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -53,19 +66,34 @@ export const Navbar = () => {
               <Link
                 key={item.title}
                 to={item.href}
-                className="relative px-3 py-2 text-sm font-medium text-auto-darkGray hover:text-auto-blue transition-colors duration-200"
+                className={cn(
+                  "relative px-3 py-2 text-sm font-medium transition-colors duration-200",
+                  location.pathname === item.href 
+                    ? "text-auto-blue" 
+                    : isScrolled 
+                      ? "text-auto-darkGray hover:text-auto-blue" 
+                      : "text-white hover:text-white/80"
+                )}
               >
                 {item.title}
               </Link>
             ))}
-            <button className="ml-2 p-2 rounded-full bg-auto-lightGray text-auto-darkGray hover:bg-auto-gray transition-colors">
+            <button className={cn(
+              "ml-2 p-2 rounded-full transition-colors",
+              isScrolled 
+                ? "bg-auto-lightGray text-auto-darkGray hover:bg-auto-gray" 
+                : "bg-white/20 text-white hover:bg-white/30"
+            )}>
               <Search size={20} />
             </button>
           </nav>
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden p-2 text-auto-darkGray" 
+            className={cn(
+              "md:hidden p-2 transition-colors",
+              isScrolled ? "text-auto-darkGray" : "text-white"
+            )}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -95,7 +123,12 @@ export const Navbar = () => {
             <Link
               key={item.title}
               to={item.href}
-              className="px-4 py-3 text-lg font-medium text-auto-darkGray hover:text-auto-blue hover:bg-auto-lightGray rounded-md transition-colors"
+              className={cn(
+                "px-4 py-3 text-lg font-medium rounded-md transition-colors",
+                location.pathname === item.href
+                  ? "text-auto-blue bg-auto-lightGray"
+                  : "text-auto-darkGray hover:text-auto-blue hover:bg-auto-lightGray"
+              )}
               onClick={() => setMobileMenuOpen(false)}
             >
               {item.title}
