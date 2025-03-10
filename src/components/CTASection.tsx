@@ -1,5 +1,6 @@
 
 import { ArrowRight, Phone, ThumbsUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const CTASection = () => {
   return (
@@ -52,10 +53,13 @@ const CTASection = () => {
               Kontaktieren Sie uns jetzt und erhalten Sie in wenigen Minuten ein kostenloses Angebot für Ihr Fahrzeug!
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="btn-hover-effect bg-white text-auto-blue px-6 py-3 rounded-md font-medium text-lg flex items-center gap-2 hover:bg-opacity-90 transition-colors">
+              <Link 
+                to="/how-it-works" 
+                className="btn-hover-effect bg-white text-auto-blue px-6 py-3 rounded-md font-medium text-lg flex items-center gap-2 hover:bg-opacity-90 transition-colors"
+              >
                 Jetzt Auto bewerten
                 <ArrowRight size={20} />
-              </button>
+              </Link>
               <a 
                 href="tel:+41XXXXXXXXX" 
                 className="inline-flex items-center gap-2 text-white text-lg font-medium"

@@ -1,5 +1,6 @@
 
 import { ArrowRight, Banknote, Calendar, ClipboardCheck, Clock, Shield, Truck } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const benefits = [
   {
@@ -63,10 +64,13 @@ const BenefitsSection = () => {
               Als führender Auto-Ankäufer in der Schweiz bieten wir Ihnen zahlreiche Vorteile für den schnellen und unkomplizierten Verkauf Ihres Fahrzeugs.
             </p>
           </div>
-          <button className="mt-4 md:mt-0 bg-transparent border border-auto-blue text-auto-blue hover:bg-auto-blue hover:text-white px-5 py-2 rounded-md font-medium transition-colors flex items-center gap-2 self-start">
+          <Link 
+            to="/how-it-works"
+            className="mt-4 md:mt-0 bg-transparent border border-auto-blue text-auto-blue hover:bg-auto-blue hover:text-white px-5 py-2 rounded-md font-medium transition-colors flex items-center gap-2 self-start"
+          >
             <span>Alle Vorteile</span>
             <ArrowRight size={18} />
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

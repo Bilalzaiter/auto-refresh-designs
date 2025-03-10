@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight, Car, CheckCircle, DollarSign } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -57,13 +58,19 @@ const Hero = () => {
           </ul>
           
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="btn-hover-effect bg-auto-blue text-white px-6 py-3 rounded-md font-medium text-lg flex items-center gap-2 hover:bg-auto-darkBlue transition-colors duration-300">
+            <Link 
+              to="/how-it-works" 
+              className="btn-hover-effect bg-auto-blue text-white px-6 py-3 rounded-md font-medium text-lg flex items-center gap-2 hover:bg-auto-darkBlue transition-colors duration-300"
+            >
               Jetzt Auto verkaufen
               <ArrowRight size={20} />
-            </button>
-            <button className="btn-hover-effect bg-white/10 text-white backdrop-blur-sm border border-white/30 px-6 py-3 rounded-md font-medium text-lg hover:bg-white/20 transition-colors duration-300">
+            </Link>
+            <Link
+              to="/contact"
+              className="btn-hover-effect bg-white/10 text-white backdrop-blur-sm border border-white/30 px-6 py-3 rounded-md font-medium text-lg hover:bg-white/20 transition-colors duration-300"
+            >
               Preisanfrage
-            </button>
+            </Link>
           </div>
         </div>
       </div>

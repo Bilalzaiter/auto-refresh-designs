@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, Search } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -14,8 +14,10 @@ const navItems = [
 
 export const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   // Handle scroll effect
   useEffect(() => {
@@ -31,6 +33,15 @@ export const Navbar = () => {
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      // Navigate to a search results page with the search term as a query parameter
+      navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
+      setSearchTerm('');
+    }
+  };
 
   return (
     <header className={cn(
@@ -78,14 +89,16 @@ export const Navbar = () => {
                 {item.title}
               </Link>
             ))}
-            <button className={cn(
-              "ml-2 p-2 rounded-full transition-colors",
-              isScrolled 
-                ? "bg-auto-lightGray text-auto-darkGray hover:bg-auto-gray" 
-                : "bg-white/20 text-white hover:bg-white/30"
-            )}>
-              <Search size={20} />
-            </button>
+            <form onSubmit={handleSearch} className="ml-2">
+              <button type="submit" className={cn(
+                "p-2 rounded-full transition-colors",
+                isScrolled 
+                  ? "bg-auto-lightGray text-auto-darkGray hover:bg-auto-gray" 
+                  : "bg-white/20 text-white hover:bg-white/30"
+              )}>
+                <Search size={20} />
+              </button>
+            </form>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -134,14 +147,18 @@ export const Navbar = () => {
               {item.title}
             </Link>
           ))}
-          <div className="relative mt-4 px-4">
+          <form onSubmit={handleSearch} className="relative mt-4 px-4">
             <input
               type="text"
               placeholder="Nach Marke oder Modell suchen..."
               className="w-full p-3 pr-10 rounded-md border border-auto-lightGray focus:outline-none focus:ring-1 focus:ring-auto-blue"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <Search size={20} className="absolute right-8 top-1/2 transform -translate-y-1/2 text-auto-mediumGray" />
-          </div>
+            <button type="submit" className="absolute right-8 top-1/2 transform -translate-y-1/2 text-auto-mediumGray">
+              <Search size={20} />
+            </button>
+          </form>
         </nav>
       </div>
     </header>
